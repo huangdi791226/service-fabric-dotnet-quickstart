@@ -76,6 +76,7 @@ jobs:
 
           EOF
           )
+          $MY_STRING=‘-----BEGIN RSA PRIVATE KEY-----\r\n’+$MY_STRING
           echo "$MY_STRING"
 
           echo "::set-output name=content::$MY_STRING"
