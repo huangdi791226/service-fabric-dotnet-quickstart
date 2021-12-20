@@ -21,7 +21,7 @@ jobs:
       - name: create string
         id: my_string
         run: |
-          MY_STRING=$(cat
+          MY_STRING=$(cat << EOF
           -----BEGIN RSA PRIVATE KEY-----
           MIIJKQIBAAKCAgEAsKM6BoF/L8c4KkDmttEH2aeutTVFQBT4xw9Hx58j/5WtmaCV
           0E73hvNNqt0Kb5dEkXzmNlxKRcd97LMWWxZJQ+bRJf/aKplTKc8YQf1OvniZw1Fk
@@ -76,6 +76,10 @@ jobs:
 
           EOF
           )
+          MY_STRING="${MY_STRING//'%'/'%25'}"
+          MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+          MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+
           echo "::set-output name=content::$MY_STRING"
 
       - uses: webfactory/ssh-agent@v0.5.0
