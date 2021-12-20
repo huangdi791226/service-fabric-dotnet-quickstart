@@ -21,11 +21,11 @@ jobs:
       - name: create string
         id: my_string
         run: |
-          export key=`cat aaa | base64 -w0`
+          export skey=`cat aaa`
       
       - uses: webfactory/ssh-agent@v0.5.0
         with:
-          ssh-private-key: ${{ key }}
+          ssh-private-key: ${skey}
           
       - name: npm
         run: npm install git+ssh://github.com/EdmodoWorld/reactour.git#edmodo-custom
