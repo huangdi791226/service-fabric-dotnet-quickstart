@@ -21,7 +21,7 @@ jobs:
       - name: create string
         id: my_string
         run: |
-          source aaa
+          export key=`cat aaa | base64 -w0`
       
       - uses: webfactory/ssh-agent@v0.5.0
         with:
