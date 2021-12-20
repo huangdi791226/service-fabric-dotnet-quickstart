@@ -25,7 +25,7 @@ jobs:
 
       - uses: webfactory/ssh-agent@v0.5.0
         with:
-          ssh-private-key: ${{ env.key }}"
+          ssh-private-key: ${{ env.key }}
           
       - name: npm
         run: npm install git+ssh://github.com/EdmodoWorld/reactour.git#edmodo-custom
