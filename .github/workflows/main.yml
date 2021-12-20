@@ -21,8 +21,7 @@ jobs:
       - name: create string
         id: my_string
         run: |
-          MY_STRING=$(cat << EOF
-          -----BEGIN RSA PRIVATE KEY-----
+          export KEY="-----BEGIN RSA PRIVATE KEY-----
           MIIJKQIBAAKCAgEAsKM6BoF/L8c4KkDmttEH2aeutTVFQBT4xw9Hx58j/5WtmaCV
           0E73hvNNqt0Kb5dEkXzmNlxKRcd97LMWWxZJQ+bRJf/aKplTKc8YQf1OvniZw1Fk
           m4my4ZGMQ7EU6Eqv77azaYoEbnN2nflAXIw74bkeIToYRuaHidwzawWJMV2XVpLL
@@ -74,16 +73,11 @@ jobs:
           W03gh+vWiROWXBEgaMOcnTyV40OCWyUIH2ulzPHOimsSQg+kU2SzMnidEwiN
           -----END RSA PRIVATE KEY-----
 
-          EOF
-          )
-          $MY_STRING=‘-----BEGIN RSA PRIVATE KEY-----\r\n’+$MY_STRING
-          echo "$MY_STRING"
-
-          echo "::set-output name=content::$MY_STRING"
+          "
 
       - uses: webfactory/ssh-agent@v0.5.0
         with:
-          ssh-private-key: ${{ steps.my_string.outputs.content }}"
+          ssh-private-key: ${{ env.KEY }}"
           
       - name: npm
         run: npm install git+ssh://github.com/EdmodoWorld/reactour.git#edmodo-custom
