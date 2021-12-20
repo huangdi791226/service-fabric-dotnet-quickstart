@@ -21,63 +21,11 @@ jobs:
       - name: create string
         id: my_string
         run: |
-          export KEY="-----BEGIN RSA PRIVATE KEY-----
-          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
-          -----END RSA PRIVATE KEY-----
-
-          "
+          export key=`cat aaa`
 
       - uses: webfactory/ssh-agent@v0.5.0
         with:
-          ssh-private-key: ${{ env.KEY }}"
+          ssh-private-key: ${{ env.key }}"
           
       - name: npm
         run: npm install git+ssh://github.com/EdmodoWorld/reactour.git#edmodo-custom
