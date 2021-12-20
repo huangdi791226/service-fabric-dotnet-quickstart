@@ -21,13 +21,12 @@ jobs:
       - name: create string
         id: my_string
         run: |
-          $MY_STRING=`cat aaa`
-          echo "::set-output name=content::$MY_STRING"
+          export MY_STRING=`cat aaa`
           echo $MY_STRING
 
       - uses: webfactory/ssh-agent@v0.5.0
         with:
-          ssh-private-key: ${{ steps.my_string.outputs.content }}
+          ssh-private-key: ${{ env.MY_STRING }}
           
       - name: npm
         run: npm install git+ssh://github.com/EdmodoWorld/reactour.git#edmodo-custom
