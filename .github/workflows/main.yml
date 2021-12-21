@@ -22,8 +22,9 @@ jobs:
         id: my_string
         run: |
           export skey=`cat aaa`
+          echo $skey
       
-      - uses: webfactory/ssh-agent@v0.5.0
+      - uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${skey}
           
