@@ -21,7 +21,7 @@ jobs:
       - name: create string
         id: my_string
         run: |
-          export skey=`cat aaa`
+          export skey=`cat aaab`
           echo $skey
       
       - uses: webfactory/ssh-agent@v0.5.4
